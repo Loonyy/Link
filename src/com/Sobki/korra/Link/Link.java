@@ -167,15 +167,18 @@ public class Link extends AvatarAbility implements AddonAbility {
 	@Override
 	public String getDescription() {
 		
+		String heart = hpPerSecond / 2 == 1 ? " heart" : " hearts";
+		double d = hpPerSecond / 2;
+		String hps = d > (int) d + 0.001 ? String.valueOf(d) : String.valueOf((int) d);
 		return "Developed by " + getAuthor() +
 				"\nLink is an ability for the Avatar. It allows them to create a link of energy between them and another player, regenerating the targeted player's health over time. "
-				+ "To use, look at the user you wish to heal and hold shift. Once the link has be created, the target player will receive " + hpPerSecond / 2 + " heart(s) per second.";
+				+ "To use, look at the user you wish to heal and hold shift. Once the link has be created, the targeted player will begin to receive " + hps + heart + " per second. Release shift to break the link.";
 	}
 
 	@Override
 	public String getVersion() {
 		
-		return "v1.0.0";
+		return "v1.0";
 	}
 
 	@Override
