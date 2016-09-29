@@ -9,7 +9,6 @@ import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.Permission;
 import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 
@@ -100,7 +99,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 	@Override
 	public boolean requireAvatar() {
 		
-		return true;
+		return false;
 	}
 
 	@Override
@@ -178,7 +177,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 	@Override
 	public String getVersion() {
 		
-		return "v1.0";
+		return "v1.1";
 	}
 
 	@Override
@@ -201,9 +200,6 @@ public class Link extends AvatarAbility implements AddonAbility {
 		duration = ConfigManager.defaultConfig.get().getLong(path + "Duration");
 		cooldown = ConfigManager.defaultConfig.get().getLong(path + "Cooldown");
 		soundVolume = (float) ConfigManager.defaultConfig.get().getDouble(path + "SoundVolume");
-
-		ProjectKorra.plugin.getServer().getPluginManager().addPermission(new Permission(permission));
-		
 	}
 
 	@Override
