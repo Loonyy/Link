@@ -111,8 +111,6 @@ public class Link extends AvatarAbility implements AddonAbility {
 			return;
 		}
 		
-		System.out.println(System.currentTimeMillis() - activateTime);
-		
 		if (System.currentTimeMillis() - activateTime > duration) {
 			bPlayer.addCooldown(this);
 			remove();
