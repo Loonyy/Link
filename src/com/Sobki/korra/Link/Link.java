@@ -50,6 +50,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 		
 		Block targetBlock = getTargetBlock(player, range);
 		List<Location> locs = getLocationsBetweenTwoPoints(origin, targetBlock.getLocation(), 0.5F);
+		loop:
 		for (Location location : locs) {
 			
 			for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 1)) {
@@ -61,6 +62,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 					angle = 0;
 					iterator = 0;
 					start();
+					break loop;
 				}
 			}
 		}
@@ -137,7 +139,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 		Location centre = new Location(player.getWorld(), midX, midY, midZ);
 		boolean boo = iterator % 20 == 0 ? true : false;
 		if (boo) {
-			centre.getWorld().playSound(centre, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, soundVolume, 2);
+			centre.getWorld().playSound(centre, Sound.ORB_PICKUP, soundVolume, 2);
 			ParticleEffect.HEART.display(end.clone().add(0, 1, 0), 0, 0, 0, 0, 1);
 		}
 		iterator++;
@@ -168,6 +170,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 		double d = hpPerSecond / 2;
 		String hps = d > (int) d + 0.001 ? String.valueOf(d) : String.valueOf((int) d);
 		return "Developed by " + getAuthor() +
+				"\nVersion: " + getVersion() +
 				"\nLink is an ability for the Avatar. It allows them to create a link of energy between them and another player, regenerating the targeted player's health over time. "
 				+ "To use, look at the user you wish to heal and hold shift. Once the link has be created, the targeted player will begin to receive " + hps + heart + " per second. Release shift to break the link.";
 	}
@@ -175,7 +178,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 	@Override
 	public String getVersion() {
 		
-		return "v1.1";
+		return "v1.2 (MC 1.8)";
 	}
 
 	@Override
