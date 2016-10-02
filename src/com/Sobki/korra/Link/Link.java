@@ -178,7 +178,7 @@ public class Link extends AvatarAbility implements AddonAbility {
 	@Override
 	public String getVersion() {
 		
-		return "v1.2 (MC 1.8)";
+		return "v1.2 (MC 1.9 - 1.10)";
 	}
 
 	@Override
